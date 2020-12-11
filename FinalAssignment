@@ -1,0 +1,217 @@
+from graphics import *
+import time
+from random import*
+from math import sqrt
+
+rand_x1 = randint(200, 250)
+rand_y1 = randint(200,250)
+rand_point1 = Point(rand_x1, rand_y1)
+
+rand_x2 = randint(300, 325)
+rand_y2 = randint(300,325)
+rand_point2 = Point(rand_x2, rand_y2)
+
+rand_x3 = randint(350, 375)
+rand_y3 = randint(200,250)
+rand_point3 = Point(rand_x3, rand_y3)
+
+rand_x4 = randint(200, 250)
+rand_y4 = randint(350,400)
+rand_point4 = Point(rand_x4, rand_y4)
+
+
+def main():
+    win = GraphWin('Bounce', 600, 600)
+    
+    line1 = Line(Point(100,500), Point(100,100))
+    line1.setFill(color_rgb(255, 0, 0))
+    line1.draw(win)
+ 
+    line2 = Line(Point(100,100), Point(500,100))
+    line2.setFill(color_rgb(0, 255, 0))
+    line2.draw(win)
+
+    line3 = Line(Point(500,500), Point(100,500))
+    line3.setFill(color_rgb(0, 0, 255))
+    line3.draw(win)
+ 
+    line4 = Line(Point(500,100), Point(500,500))
+    line4.draw(win)
+    
+    
+    
+    c1 = Circle(rand_point1, 30)
+    c1.setFill(color_rgb(40, 30, 20))
+    c1.setOutline(color_rgb(255, 255, 255))
+    c1.draw(win)
+    
+    c2 = Circle(rand_point2, 30)
+    c2.setFill(color_rgb(68, 200, 37))
+    c2.setOutline(color_rgb(255, 255, 255))
+    c2.draw(win)
+    
+    c3 = Circle(rand_point3, 30)
+    c3.setFill(color_rgb(50, 10, 200))
+    c3.setOutline(color_rgb(255, 255, 255))
+    c3.draw(win)
+    
+    c4 = Circle(rand_point4, 30)
+    c4.setFill(color_rgb(100, 20, 100))
+    c4.setOutline(color_rgb(255, 255, 255))
+    c4.draw(win)
+    
+ 
+    
+    x_velocity1 = randint(-8, 8)
+    y_velocity1 = randint(-8, 8)
+
+    x_velocity2 = randint(-8, 8)
+    y_velocity2 = randint(-8, 8)
+
+    x_velocity3 = randint(-8, 8)
+    y_velocity3 = randint(-8, 8)
+
+    x_velocity4 = randint(-8, 8)
+    y_velocity4 = randint(-8, 8)
+    
+   
+        
+    for i in range (200):
+        
+        c1.move(x_velocity1, y_velocity1)
+        center1 = c1.getCenter()
+        center2 = c2.getCenter()
+        center3 = c3.getCenter()
+        center4 = c4.getCenter()
+        x1 = center1.getX()
+        y1 = center1.getY()
+        x2 = center2.getX()
+        y2 = center2.getY()
+        x3 = center3.getX()
+        y3 = center3.getY()
+        x4 = center4.getX()
+        y4 = center4.getY()
+        dist1_2 = sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1))
+        dist1_3 = sqrt((x3-x1)*(x3-x1)+(y3-y1)*(y3-y1))
+        dist1_4 = sqrt((x4-x1)*(x4-x1)+(y4-y1)*(y4-y1))
+        if dist1_2 < 60:
+            x_velocity1 = x_velocity1 * -1
+            y_velocity1 = y_velocity1 * -1
+            x_velocity2 = x_velocity2 * -1
+            y_velocity2 = y_velocity2 * -1
+        if dist1_3 < 60:
+            x_velocity1 = x_velocity1 * -1
+            y_velocity1 = y_velocity1 * -1
+            x_velocity3 = x_velocity3 * -1
+            y_velocity3 = y_velocity3 * -1
+        if dist1_4 < 60:
+            x_velocity1 = x_velocity1 * -1
+            y_velocity1 = y_velocity1 * -1
+            x_velocity4 = x_velocity4 * -1
+            y_velocity4 = y_velocity4 * -1
+        if x1 < 116:
+            x_velocity1 = x_velocity1 * -1
+            y_velocity1 = y_velocity1 * -1
+        if x1 > 484:
+            x_velocity1 = x_velocity1 * -1
+            y_velocity1 = y_velocity1 * -1
+        if y1 < 116:
+            x_velocity1 = x_velocity1 * -1
+            y_velocity1 = y_velocity1 * -1
+        if y1 > 484:
+            x_velocity1 = x_velocity1 * -1
+            y_velocity1 = y_velocity1 * -1
+        else:
+            x_velocity1 * 1
+            y_velocity1 * 1
+            
+        c2.move(x_velocity2, y_velocity2)
+        center2 = c2.getCenter()
+        center3 = c3.getCenter()
+        x2 = center2.getX()
+        y2 = center2.getY()
+        x3 = center3.getX()
+        y3 = center3.getY()
+        dist2_3 = sqrt((x3-x2)*(x3-x2)+(y3-y2)*(y3-y2))
+        dist2_4 = sqrt((x4-x2)*(x4-x2)+(y4-y2)*(y4-y2))
+        if dist2_3 < 60:
+            x_velocity2 = x_velocity2 * -1
+            y_velocity2 = y_velocity2 * -1
+            x_velocity3 = x_velocity3 * -1
+            y_velocity3 = y_velocity3 * -1
+        if dist2_4 < 60:
+            x_velocity2 = x_velocity2 * -1
+            y_velocity2 = y_velocity2 * -1
+            x_velocity4 = x_velocity4 * -1
+            y_velocity4 = y_velocity4 * -1
+        if x2 < 116:
+            x_velocity2 = x_velocity2 * -1
+            y_velocity2 = y_velocity2 * -1
+        if x2 > 484:
+            x_velocity2 = x_velocity2 * -1
+            y_velocity2 = y_velocity2 * -1
+        if y2 < 116:
+            x_velocity2 = x_velocity2 * -1
+            y_velocity2 = y_velocity2 * -1
+        if y2 > 484:
+            x_velocity2 = x_velocity2 * -1
+            y_velocity2 = y_velocity2 * -1
+        else:
+            x_velocity2 * 1
+            y_velocity2 * 1
+            
+        c3.move(x_velocity3, y_velocity3)
+        center3 = c3.getCenter()
+        center4 = c4.getCenter()
+        x3 = center3.getX()
+        y3 = center3.getY()
+        x4 = center4.getX()
+        y4 = center4.getY()
+        dist3_4 = sqrt((x4-x3)*(x4-x3)+(y4-y3)*(y4-y3))
+        if dist3_4 < 60:
+            x_velocity3 = x_velocity3 * -1
+            y_velocity3 = y_velocity3 * -1
+            x_velocity4 = x_velocity4 * -1
+            y_velocity4 = y_velocity4 * -1
+        if x3 < 116:
+            x_velocity3 = x_velocity3 * -1
+            y_velocity3 = y_velocity3 * -1
+        if x3 > 484:
+            x_velocity3 = x_velocity3 * -1
+            y_velocity3 = y_velocity3 * -1
+        if y3 < 116:
+            x_velocity3 = x_velocity3 * -1
+            y_velocity3 = y_velocity3 * -1
+        if y3 > 484:
+            x_velocity3 = x_velocity3 * -1
+            y_velocity3 = y_velocity3 * -1
+        else:
+            x_velocity3 * 1
+            y_velocity3 * 1
+            
+        c4.move(x_velocity4, y_velocity4)
+        center4 = c4.getCenter()
+        center2 = c2.getCenter()
+        x4 = center4.getX()
+        y4 = center4.getY()
+        if x4 < 116:
+            x_velocity4 = x_velocity4 * -1
+            y_velocity4 = y_velocity4 * -1
+        if x4 > 484:
+            x_velocity4 = x_velocity4 * -1
+            y_velocity4 = y_velocity4 * -1
+        if y4 < 116:
+            x_velocity4 = x_velocity4 * -1
+            y_velocity4 = y_velocity4 * -1
+        if y4 > 484:
+            x_velocity4 = x_velocity4 * -1
+            y_velocity4 = y_velocity4 * -1
+        else:
+            x_velocity4 * 1
+            y_velocity4 * 1
+        
+        time.sleep(.05)
+    win.getMouse() 
+    win.close() 
+
+main()
